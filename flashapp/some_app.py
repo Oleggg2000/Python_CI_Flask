@@ -28,8 +28,8 @@ def data_to():
 
 # используем капчу и полученные секретные ключи с сайта google
 app.config['RECAPTCHA_USE_SSL'] = False
-app.config['RECAPTCHA_PUBLIC_KEY'] = 'сюда поместить ключ из google'
-app.config['RECAPTCHA_PRIVATE_KEY'] = 'сюда поместить секретный ключ из google'
+app.config['RECAPTCHA_PUBLIC_KEY'] = '6LcrEfoUAAAAAEUT-G_eQNnVjvfzRLHRKyOKTS5I'
+app.config['RECAPTCHA_PRIVATE_KEY'] = '6LcrEfoUAAAAAHrgRuynjStzi9hWbL1s2LgpMxGY'
 app.config['RECAPTCHA_OPTIONS'] = {'theme': 'white'}
 
 # создаем форму для загрузки файла
@@ -47,6 +47,7 @@ class NetForm(FlaskForm):
 # подключаем наш модуль и переименовываем
 # для исключения конфликта имен
 import net as neuronet
+
 # метод обработки запроса GET и POST от клиента
 @app.route("/net",methods=['GET', 'POST'])
 def net():

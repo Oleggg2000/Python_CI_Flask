@@ -17,6 +17,7 @@ from PIL import Image
 from io import BytesIO
 import json
 
+import lxml.etree as ET
 
 app = Flask(__name__)
 
@@ -67,6 +68,19 @@ def apinet():
     # возвращаем ответ
     return resp
 
+@app.route("/apixml",methods=['GET', 'POST'])
+def apixml():
+    #парсим xml файл в dom
+    dom = ET.parse("./static/xml/file.xml")
+    #парсим шаблон в dom
+    xslt = ET.parse("./static/xml/file.xslt")
+    #получаем трансформер
+    transform = ET.XSLT(xslt)
+    #преобразуем xml с помощью трансформера xslt
+    newhtml = transform(dom)
+    #преобразуем из памяти dom в строку, возможно, понадобится указать кодировку
+    strfile = ET.tostring(newhtml)
+    return strfile
 
 # используем капчу и полученные секретные ключи с сайта google
 app.config['RECAPTCHA_USE_SSL'] = False

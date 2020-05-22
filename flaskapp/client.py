@@ -1,6 +1,6 @@
 import requests
-import os
 from io import BytesIO
+import os
 import base64
 
 try:

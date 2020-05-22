@@ -3,6 +3,15 @@ import os
 from io import BytesIO
 import base64
 
+try:
+    r = requests.get('http://localhost:5000/apixml')
+    print(r.status_code)
+    if(r.status_code!=200):
+        exit(1)
+    print(r.text)
+except:
+    exit(1)
+
 img_data = None
 # создаем путь к файлу (для кроссплатформенности, например)
 path = os.path.join('./static','image0008.png')
@@ -25,11 +34,3 @@ r = requests.get('http://localhost:5000/data_to')
 print(r.status_code)
 print(r.text)
 
-try:
-    r = requests.get('http://localhost:5000/apixml')
-    print(r.status_code)
-    if(r.status_code!=200):
-        exit(1)
-    print(r.text)
-except:
-    exit(1)

@@ -38,6 +38,7 @@ def data_to():
 @app.route("/apinet", methods=['GET', 'POST'])
 def apinet():
     # проверяем что в запросе json данные
+    #test
     neurodic = {}
     if request.mimetype == 'application/json':
         # получаем json данные

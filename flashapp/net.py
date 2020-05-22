@@ -6,13 +6,14 @@ from keras.applications.resnet50 import preprocess_input, decode_predictions
 import os
 from PIL import Image
 import numpy as np
-from tensorflow.compat.v1 import ConfigProto
-from tensorflow.compat.v1 import InteractiveSession
+import tensorflow as tf
+#from tf.compat.v1 import ConfigProto
+#from tf.compat.v1 import InteractiveSession
 # настраиваем работу с GPU, для CPU эта часть не нужна
-config = ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.per_process_gpu_memory_fraction = 0.7
 config.gpu_options.allow_growth = True
-session = InteractiveSession(config=config)
+session = tf.compat.v1.InteractiveSession(config=config)
 height = 224
 width = 224
 nh=224

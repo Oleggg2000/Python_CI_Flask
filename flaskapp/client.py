@@ -1,7 +1,8 @@
 import requests
 from io import BytesIO
-import os
 import base64
+import os
+
 
 try:
     r = requests.get('http://localhost:5000/apixml')

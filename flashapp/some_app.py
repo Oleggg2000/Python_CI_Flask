@@ -35,7 +35,7 @@ def data_to():
 
 
 # метод для обработки запроса от пользователя
-@app.route("/apinet",methods=['GET', 'POST'])
+@app.route("/apinet", methods=['GET', 'POST'])
 def apinet():
     # проверяем что в запросе json данные
     if request.mimetype == 'application/json':

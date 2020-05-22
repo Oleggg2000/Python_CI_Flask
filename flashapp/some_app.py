@@ -38,6 +38,7 @@ def data_to():
 @app.route("/apinet", methods=['GET', 'POST'])
 def apinet():
     # проверяем что в запросе json данные
+    neurodic = {}
     if request.mimetype == 'application/json':
         # получаем json данные
         data = request.get_json()
@@ -51,7 +52,6 @@ def apinet():
         # чтобы считать изображение как файл из памяти используем BytesIO
         img = Image.open(BytesIO(cfile))
         decode = neuronet.getresult([img])
-        neurodic = {}
         for elem in decode:
             neurodic[elem[0][1]] = str(elem[0][2])
             print(elem)

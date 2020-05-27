@@ -1,7 +1,7 @@
 import random
 import keras
-from keras.layers import Input
 from keras.models import Model
+from keras.layers import Input
 from keras.applications.resnet50 import preprocess_input, decode_predictions
 import os
 from PIL import Image

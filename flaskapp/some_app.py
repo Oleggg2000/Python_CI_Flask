@@ -108,6 +108,7 @@ import net as neuronet
 
 # метод обработки запроса GET и POST от клиента
 @app.route("/net",methods=['GET', 'POST'])
+wtf.quick_form(form, method='post', enctype="multipart/form-data", action="net")
 def net():
     form = NetForm()
     # обнуляем переменные передаваемые в форму

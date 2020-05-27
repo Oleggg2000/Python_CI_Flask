@@ -108,7 +108,6 @@ import net as neuronet
 
 # метод обработки запроса GET и POST от клиента
 @app.route("/net",methods=['GET', 'POST'])
-wtf.quick_form(form, method='post', enctype="multipart/form-data", action="net")
 def net():
     form = NetForm()
     # обнуляем переменные передаваемые в форму
@@ -131,7 +130,7 @@ def net():
             # сети если был нажат сабмит, либо передадим falsy значения
     return render_template('net.html',form=form,image_name=filename,neurodic=neurodic)
 
-
+#wtf.quick_form(form, method='post', enctype="multipart/form-data", action="net")
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)

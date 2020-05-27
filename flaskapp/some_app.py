@@ -21,7 +21,6 @@ import lxml.etree as ET
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def hello():
     return " <html><head></head> <body> <i><h1>Hello World!</h1></i> </body></html>"
@@ -131,7 +130,7 @@ def net():
             # сети если был нажат сабмит, либо передадим falsy значения
     return render_template('net.html',form=form,image_name=filename,neurodic=neurodic)
 
-
+wtf.quick_form(form, method='post', enctype="multipart/form-data", action="net")
 
 
 if __name__ == "__main__":

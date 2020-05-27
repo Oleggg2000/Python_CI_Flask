@@ -50,5 +50,5 @@ def getresult(image_box):
     return decode
 
 
-#fcount, fimage = read_image_files(1,'./static')
-#decode = getresult(fimage)
+fcount, fimage = read_image_files(1,'./static')
+decode = getresult(fimage)

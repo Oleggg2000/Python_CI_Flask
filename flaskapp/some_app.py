@@ -128,9 +128,9 @@ def net():
             form.upload.data.save(filename)
             # передаем форму в шаблон, так же передаем имя файла и результат работы нейронной
             # сети если был нажат сабмит, либо передадим falsy значения
+    wtf.quick_form(form, method='post', enctype="multipart/form-data", action="net")
     return render_template('net.html',form=form,image_name=filename,neurodic=neurodic)
 
-wtf.quick_form(form, method='post', enctype="multipart/form-data", action="net")
 
 
 if __name__ == "__main__":

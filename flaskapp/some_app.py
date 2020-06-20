@@ -81,6 +81,14 @@ def apixml():
     strfile = ET.tostring(newhtml)
     return strfile
 
+@app.route("/graph", methods=['GET', 'POST'])
+def graph():
+    with open('./static/data.json', 'r', encoding='utf-8') as fh:  # открываем файл на чтение
+        data = json.load(fh)  # загружаем из файла данные в словарь data
+    print(data)
+    return " <html><head></head> <body> <i><h1>Hello World!</h1></i> </body></html>"
+
+
 # используем капчу и полученные секретные ключи с сайта google
 app.config['RECAPTCHA_USE_SSL'] = False
 app.config['RECAPTCHA_PUBLIC_KEY'] = '6LcrEfoUAAAAAEUT-G_eQNnVjvfzRLHRKyOKTS5I'

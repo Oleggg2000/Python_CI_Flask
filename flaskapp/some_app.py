@@ -11,6 +11,10 @@ from werkzeug.utils import secure_filename
 import os
 
 from flask import request
+import numpy as np
+
+import plotly.graph_objs as go
+
 from flask import Response
 import base64
 from PIL import Image
@@ -79,14 +83,32 @@ def apixml():
     newhtml = transform(dom)
     #преобразуем из памяти dom в строку, возможно, понадобится указать кодировку
     strfile = ET.tostring(newhtml)
+
     return strfile
 
-@app.route("/graph", methods=['GET', 'POST'])
+@app.route("/graph",methods=['GET', 'POST'])
 def graph():
-    with open('./static/data.json', 'r', encoding='utf-8') as fh:  # открываем файл на чтение
-        data = json.load(fh)  # загружаем из файла данные в словарь data
+    # загрузить из json
+    with open('./static/data.json', 'r') as file:  # открываем файл на чтение
+        data = json.load(file)  # загружаем из файла данные в словарь data
     print(data)
-    return " <html><head></head> <body> <i><h1>Hello World!</h1></i> </body></html>"
+    x = np.arange(len(data) / 2)
+    y = np.arange(len(data) / 2)
+    i = 0
+    for index in data:
+        if index == 'x' + str(i):
+            x[i] = data.get(index)
+        elif index == 'y' + str(i):
+            y[i] = data.get(index)
+        i = i + 1
+        if i == len(data) / 2:
+            i = 0
+    print(x)
+    print(y)
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=x, y=y))
+    fig.show()
+    return "<html><head></head> <body> <i><h1>Graph</h1></i> </body></html>"
 
 
 # используем капчу и полученные секретные ключи с сайта google

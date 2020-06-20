@@ -4,6 +4,7 @@ import base64
 import os
 
 
+
 try:
     r = requests.get('http://localhost:5000/apixml')
     print(r.status_code)
